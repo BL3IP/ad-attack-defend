@@ -1,0 +1,3 @@
+﻿EventID=4768 TicketEncryptionType="0x17" PreAuthType=0
+
+EventID=4769 TicketEncryptionType="0x17" NOT (ServiceName IN ("*$", "krbtgt"))

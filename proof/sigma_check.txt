@@ -1,0 +1,14 @@
+﻿sigma.exe : Parsing Sigma rules
+At line:5 char:1
++ & $sigma check "$p14\detections" 2>&1 | Out-File -Encoding utf8 "$p14 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Parsing Sigma rules:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Checking Sigma rules
+
+=== Summary ===
+Found 0 errors, 0 condition errors and 0 issues.
+No rule errors found.
+No condition errors found.
+No validation issues found.
