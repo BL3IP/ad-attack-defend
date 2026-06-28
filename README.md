@@ -1,5 +1,7 @@
 # 14 — Active Directory Attack & Defend (Purple Team)
 
+[![CI](https://github.com/BL3IP/ad-attack-defend/actions/workflows/ci.yml/badge.svg)](https://github.com/BL3IP/ad-attack-defend/actions/workflows/ci.yml)
+
 A purple-team study of two top AD credential-access techniques — **Kerberoasting** and **AS-REP
 roasting** — with the attack, **validated Sigma detections**, and hardening.
 
