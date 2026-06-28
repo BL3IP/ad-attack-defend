@@ -1,0 +1,26 @@
+title: Potential AS-REP Roasting via RC4 TGT Without Pre-Authentication
+id: 2b7e4c9a-1f63-48d0-a5b2-7c0e9d3a6f54
+status: experimental
+description: >
+    Detects Kerberos TGT (AS-REQ) requests for accounts that do not require pre-authentication,
+    returned with RC4 encryption - the condition AS-REP roasting abuses to obtain crackable
+    hashes for accounts with "Do not require Kerberos preauthentication" set.
+references:
+    - https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4768
+author: Cyber Portfolio
+date: 2026-06-28
+tags:
+    - attack.credential-access
+    - attack.t1558.004
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4768
+        TicketEncryptionType: '0x17'
+        PreAuthType: 0
+    condition: selection
+falsepositives:
+    - Rare legitimate accounts intentionally configured without pre-authentication.
+level: high

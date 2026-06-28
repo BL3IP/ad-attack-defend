@@ -1,0 +1,29 @@
+title: Potential Kerberoasting via RC4 Service Ticket Request
+id: 6f2a1d3c-9b48-4e7a-8c21-0d5f7a9e4b18
+status: experimental
+description: >
+    Detects Kerberos service-ticket (TGS) requests using weak RC4 encryption (0x17) for
+    user-account SPNs - a hallmark of Kerberoasting, where an attacker requests tickets for
+    service accounts and cracks them offline to recover the service account password.
+references:
+    - https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4769
+author: Cyber Portfolio
+date: 2026-06-28
+tags:
+    - attack.credential-access
+    - attack.t1558.003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4769
+        TicketEncryptionType: '0x17'
+    filter_machine:
+        ServiceName|endswith: '$'
+    filter_krbtgt:
+        ServiceName: 'krbtgt'
+    condition: selection and not 1 of filter_*
+falsepositives:
+    - Legacy applications/services that still negotiate RC4 tickets (tune by ServiceName).
+level: medium
